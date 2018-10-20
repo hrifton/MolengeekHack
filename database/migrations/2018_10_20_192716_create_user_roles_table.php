@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDisposTable extends Migration
+class CreateUserRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateDisposTable extends Migration
      */
     public function up()
     {
-        Schema::create('dispos', function (Blueprint $table) {
+        Schema::create('user_roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->date_time_set('date_debut');
-            $table->date_time_set('date_fin');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('role_id');
             $table->timestamps();
-            $table->unique(['id', 'date_debut','date_fin']);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');  
         });
     }
 
@@ -29,6 +30,6 @@ class CreateDisposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dispos');
+        Schema::dropIfExists('user_roles');
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Auth;
+
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class UserRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return Auth::user();
+        return UserRole::All();
     }
 
     /**
@@ -40,10 +40,10 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\UserRole  $magasin
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(UserRole $userRole)
     {
         //
     }
@@ -51,10 +51,10 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\UserRole  $magasin
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(UserRole $userRole)
     {
         //
     }
@@ -63,10 +63,10 @@ class RoleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\UserRole  $UserRole
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, UserRole $userRole)
     {
         //
     }
@@ -74,10 +74,10 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\UserRole  $magasin
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserRole $userRole)
     {
         //
     }

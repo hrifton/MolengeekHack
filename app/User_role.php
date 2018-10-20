@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class dispos extends Model
+class User_role extends Model
 {
     //
 }

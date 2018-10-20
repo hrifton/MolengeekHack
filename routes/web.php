@@ -14,7 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/profil', function () {
+    return view('profil',['user'=> Auth::user()] );
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/role','RoleController');
+
+Route::resource('/user','UserController');

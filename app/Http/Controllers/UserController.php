@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Auth;
+
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return Auth::user();
+        //
     }
 
     /**
@@ -68,7 +68,8 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::findOrFail($id);
+        dd($user);
     }
 
     /**
