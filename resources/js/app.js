@@ -17,6 +17,7 @@ import BootstrapVue from 'bootstrap-vue';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('profil', require('./components/Profil.vue'));
+Vue.component('list', require('./components/list.vue'));
 
 Vue.use(BootstrapVue);
 const app = new Vue({

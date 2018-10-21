@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::get('/profil', function () {
     return view('profil',['user'=> Auth::user()] );
 });
+Route::get('/list', function () {
+    return view('list');
+});
 
 Auth::routes();
 
