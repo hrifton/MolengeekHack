@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -78,7 +79,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @section('content')
                 
             @show

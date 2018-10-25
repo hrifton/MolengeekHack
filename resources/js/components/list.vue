@@ -23,8 +23,7 @@
                     <h4 class="card-title text-center">{{agent.name}}</h4>
                     <!-- ↓ Redes ↓ -->
                     <div class="paneles-usuario">
-                      <b-button variant="primary">Appeller</b-button>
-                      <b-button variant="primary" href="#">Contact email</b-button>
+                      <b-button variant="primary">Booking</b-button>
                     </div>
                     <!-- ↑ Redes ↑ -->
                     </div>

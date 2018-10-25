@@ -166,7 +166,7 @@
                                                 <label>Hourly Rate</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>10$/hr</p>
+                                                <p>30€/h</p>
                                             </div>
                                         </div>
                                         <div class="row">
