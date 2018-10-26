@@ -65021,42 +65021,72 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['user'],
-  data: function data() {
-    return {
-      up: {
-        user: { id: this.user.id,
-          name: '',
-          email: '' },
-        selected: []
-      }
+    props: ['user'],
+    data: function data() {
+        return {
+            up: {
+                user: { id: this.user.id,
+                    name: '',
+                    email: '' },
+                selected: []
+            }
 
-    };
-  },
-
-  methods: {
-    save: function save(up) {
-      axios.put('/role/', up.user.id).then(function (response) {
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
-      });
+        };
     },
-    imgUrl: function imgUrl(id) {
-      return 'http://www.worldhotel.co.kr/main/img/avatar/avatar' + id + '.png';
-    },
-    getId: function getId() {
-      var id = 1;
-      do {
 
-        id = Math.floor(Math.random() * Math.floor(10));
-      } while (id == 0);
-      return id;
+    methods: {
+        save: function save(up) {
+            axios.put('/role/', up.user.id).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        imgUrl: function imgUrl(id) {
+            return 'http://www.worldhotel.co.kr/main/img/avatar/avatar' + id + '.png';
+        },
+        getId: function getId() {
+            var id = 1;
+            do {
+
+                id = Math.floor(Math.random() * Math.floor(10));
+            } while (id == 0);
+            return id;
+        }
     }
-  }
 });
 
 /***/ }),
@@ -65082,15 +65112,15 @@ var render = function() {
           _c("div", { staticClass: "profile-head" }, [
             _c("h5", [
               _vm._v(
-                "\n                                        " +
+                "\n                            " +
                   _vm._s(_vm.user.name) +
-                  "\n                                    "
+                  "\n                        "
               )
             ]),
             _vm._v(" "),
             _c("h6", [
               _vm._v(
-                "\n                                        Statut\n                                    "
+                "\n                            Statut\n                        "
               )
             ]),
             _vm._v(" "),
@@ -65170,21 +65200,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "row" }, [
-                    _vm._m(11),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-4" },
-                      [
-                        _c("b-form-input", {
-                          staticClass: "form-control",
-                          attrs: { id: "type-date", type: "date" }
-                        })
-                      ],
-                      1
-                    )
-                  ]),
+                  _vm._m(11),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
                     _vm._m(12),
@@ -65202,13 +65218,33 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(13),
+                  _c("div", { staticClass: "row" }, [
+                    _vm._m(13),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4" },
+                      [
+                        _c("b-form-input", {
+                          staticClass: "form-control",
+                          attrs: { id: "type-date", type: "date" }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
                   _vm._v(" "),
                   _vm._m(14),
                   _vm._v(" "),
                   _vm._m(15),
                   _vm._v(" "),
                   _vm._m(16),
+                  _vm._v(" "),
+                  _vm._m(17),
+                  _vm._v(" "),
+                  _vm._m(18),
+                  _vm._v(" "),
+                  _vm._m(19),
                   _vm._v(" "),
                   _c("div", { staticClass: "row" }, [
                     _c(
@@ -65223,7 +65259,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                               valider\n                                            "
+                              "\n                                        valider\n                                    "
                             )
                           ]
                         )
@@ -65247,7 +65283,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "file btn btn-lg btn-primary" }, [
       _vm._v(
-        "\n                                Change Photo\n                                "
+        "\n                            Change Photo\n                            "
       ),
       _c("input", { attrs: { type: "file", name: "file" } })
     ])
@@ -65493,6 +65529,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("h4", [_vm._v(" Période disponibilité")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-6" }, [
       _c("label", [_vm._v("disponiblité date debut ")])
     ])
@@ -65503,6 +65547,40 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-6" }, [
       _c("label", [_vm._v("disponiblité date de fin ")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("h4", [_vm._v(" Disponibilité hebdomadaire")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-1" }, [_c("label", [_vm._v("Lundi")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-1" }, [_c("label", [_vm._v("Mardi")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-1" }, [
+        _c("label", [_vm._v("Mercredi")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-1" }, [_c("label", [_vm._v("Jeudi")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-1" }, [
+        _c("label", [_vm._v("Vendredi")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-1" }, [_c("label", [_vm._v("Samdi")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-1" }, [
+        _c("label", [_vm._v("Dimanche")])
+      ])
     ])
   },
   function() {
