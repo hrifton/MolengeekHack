@@ -15,8 +15,8 @@ class CreateDisposTable extends Migration
     {
         Schema::create('dispos', function (Blueprint $table) {
             $table->increments('id');
-            $table->date_time_set('date_debut');
-            $table->date_time_set('date_fin');
+            $table->datetime('date_debut');
+            $table->datetime('date_fin');
             $table->timestamps();
             $table->unique(['id', 'date_debut','date_fin']);
         });

@@ -64715,7 +64715,7 @@ exports = module.exports = __webpack_require__(14)(false);
 
 
 // module
-exports.push([module.i, "\n.emp-profile{\n    padding: 3%;\n    margin-top: 3%;\n    margin-bottom: 3%;\n    border-radius: 0.5rem;\n    background: #fff;\n}\n.profile-img{\n    text-align: center;\n}\n.profile-img img{\n    width: 70%;\n    height: 100%;\n}\n.profile-img .file {\n    position: relative;\n    overflow: hidden;\n    margin-top: -20%;\n    width: 70%;\n    border: none;\n    border-radius: 0;\n    font-size: 15px;\n    background: #212529b8;\n}\n.profile-img .file input {\n    position: absolute;\n    opacity: 0;\n    right: 0;\n    top: 0;\n}\n.profile-head h5{\n    color: #333;\n}\n.profile-head h6{\n    color: #0062cc;\n}\n.profile-edit-btn{\n    border: none;\n    border-radius: 1.5rem;\n    width: 70%;\n    padding: 2%;\n    font-weight: 600;\n    color: #6c757d;\n    cursor: pointer;\n}\n.proile-rating{\n    font-size: 12px;\n    color: #818182;\n    margin-top: 5%;\n}\n.proile-rating span{\n    color: #495057;\n    font-size: 15px;\n    font-weight: 600;\n}\n.profile-head .nav-tabs{\n    margin-bottom:5%;\n}\n.profile-head .nav-tabs .nav-link{\n    font-weight:600;\n    border: none;\n}\n.profile-head .nav-tabs .nav-link.active{\n    border: none;\n    border-bottom:2px solid #0062cc;\n}\n.profile-work{\n    padding: 14%;\n    margin-top: -15%;\n}\n.profile-work p{\n    font-size: 12px;\n    color: #818182;\n    font-weight: 600;\n    margin-top: 10%;\n}\n.profile-work a{\n    text-decoration: none;\n    color: #495057;\n    font-weight: 600;\n    font-size: 14px;\n}\n.profile-work ul{\n    list-style: none;\n}\n.profile-tab label{\n    font-weight: 600;\n}\n.profile-tab p{\n    font-weight: 600;\n    color: #0062cc;\n}\n", ""]);
+exports.push([module.i, "\n.emp-profile {\n    padding: 3%;\n    margin-top: 3%;\n    margin-bottom: 3%;\n    border-radius: 0.5rem;\n    background: #fff;\n}\n.profile-img {\n    text-align: center;\n}\n.profile-img img {\n    width: 70%;\n    height: 100%;\n}\n.profile-img .file {\n    position: relative;\n    overflow: hidden;\n    margin-top: -20%;\n    width: 70%;\n    border: none;\n    border-radius: 0;\n    font-size: 15px;\n    background: #212529b8;\n}\n.profile-img .file input {\n    position: absolute;\n    opacity: 0;\n    right: 0;\n    top: 0;\n}\n.profile-head h5 {\n    color: #333;\n}\n.profile-head h6 {\n    color: #0062cc;\n}\n.profile-edit-btn {\n    border: none;\n    border-radius: 1.5rem;\n    width: 70%;\n    padding: 2%;\n    font-weight: 600;\n    color: #6c757d;\n    cursor: pointer;\n}\n.proile-rating {\n    font-size: 12px;\n    color: #818182;\n    margin-top: 5%;\n}\n.proile-rating span {\n    color: #495057;\n    font-size: 15px;\n    font-weight: 600;\n}\n.profile-head .nav-tabs {\n    margin-bottom: 5%;\n}\n.profile-head .nav-tabs .nav-link {\n    font-weight: 600;\n    border: none;\n}\n.profile-head .nav-tabs .nav-link.active {\n    border: none;\n    border-bottom: 2px solid #0062cc;\n}\n.profile-work {\n    padding: 14%;\n    margin-top: -15%;\n}\n.profile-work p {\n    font-size: 12px;\n    color: #818182;\n    font-weight: 600;\n    margin-top: 10%;\n}\n.profile-work a {\n    text-decoration: none;\n    color: #495057;\n    font-weight: 600;\n    font-size: 14px;\n}\n.profile-work ul {\n    list-style: none;\n}\n.profile-tab label {\n    font-weight: 600;\n}\n.profile-tab p {\n    font-weight: 600;\n    color: #0062cc;\n}\n", ""]);
 
 // exports
 
@@ -65051,6 +65051,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65058,14 +65072,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             up: {
-                user: { id: this.user.id,
+                user: {
+                    id: this.user.id,
                     name: '',
-                    email: '' },
-                selected: []
-            }
-
+                    email: ''
+                }
+            },
+            select: [],
+            daysselected: {
+                periodeDeb: '',
+                periodeFin: ''
+            },
+            // Must be an array reference!
+            options: [{
+                text: 'Lundi',
+                value: 'Lundi'
+            }, {
+                text: 'Mardi',
+                value: 'Mardi'
+            }, {
+                text: 'Mercredi',
+                value: 'Mercredi'
+            }, {
+                text: 'Jeudi',
+                value: 'Jeudi'
+            }, {
+                text: 'Vendredi',
+                value: 'Vendredi'
+            }, {
+                text: 'Samedi',
+                value: 'Samedi'
+            }, {
+                text: 'Dimanche',
+                value: 'Dimanche'
+            }]
         };
     },
+
 
     methods: {
         save: function save(up) {
@@ -65075,8 +65118,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(error);
             });
         },
+        dispo: function dispo(item) {
+            axios.post('/dispo', {
+                id: this.user.id,
+                dateDeb: this.daysselected.periodeDeb,
+                dateFin: this.daysselected.periodeFin
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
         imgUrl: function imgUrl(id) {
-            return 'http://www.worldhotel.co.kr/main/img/avatar/avatar' + id + '.png';
+            return 'https://cdn.iconscout.com/icon/free/png-256/avatar-369-4563' + id + '.p' + 'ng';
         },
         getId: function getId() {
             var id = 1;
@@ -65102,7 +65156,7 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-4" }, [
           _c("div", { staticClass: "profile-img" }, [
-            _c("img", { attrs: { src: _vm.imgUrl(_vm.getId()), alt: "" } }),
+            _c("img", { attrs: { src: _vm.imgUrl(_vm.user.id), alt: "" } }),
             _vm._v(" "),
             _vm._m(0)
           ])
@@ -65112,16 +65166,14 @@ var render = function() {
           _c("div", { staticClass: "profile-head" }, [
             _c("h5", [
               _vm._v(
-                "\n                            " +
+                "\n                        " +
                   _vm._s(_vm.user.name) +
-                  "\n                        "
+                  "\n                    "
               )
             ]),
             _vm._v(" "),
             _c("h6", [
-              _vm._v(
-                "\n                            Statut\n                        "
-              )
+              _vm._v("\n                        Statut\n                    ")
             ]),
             _vm._v(" "),
             _vm._m(1),
@@ -65211,7 +65263,14 @@ var render = function() {
                       [
                         _c("b-form-input", {
                           staticClass: "form-control",
-                          attrs: { id: "type-date", type: "date" }
+                          attrs: { type: "date" },
+                          model: {
+                            value: _vm.daysselected.periodeDeb,
+                            callback: function($$v) {
+                              _vm.$set(_vm.daysselected, "periodeDeb", $$v)
+                            },
+                            expression: "daysselected.periodeDeb"
+                          }
                         })
                       ],
                       1
@@ -65227,14 +65286,92 @@ var render = function() {
                       [
                         _c("b-form-input", {
                           staticClass: "form-control",
-                          attrs: { id: "type-date", type: "date" }
+                          attrs: { type: "date" },
+                          model: {
+                            value: _vm.daysselected.periodeFin,
+                            callback: function($$v) {
+                              _vm.$set(_vm.daysselected, "periodeFin", $$v)
+                            },
+                            expression: "daysselected.periodeFin"
+                          }
                         })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-2" },
+                      [
+                        _c(
+                          "b-button",
+                          {
+                            staticClass: "float-right",
+                            attrs: { size: "md", variant: "success" },
+                            on: {
+                              click: function($event) {
+                                _vm.dispo(_vm.daysselected)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    valider\n                                "
+                            )
+                          ]
+                        )
                       ],
                       1
                     )
                   ]),
                   _vm._v(" "),
                   _vm._m(14),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "row" },
+                    [
+                      _c(
+                        "b-form-group",
+                        [
+                          _c("b-form-checkbox-group", {
+                            attrs: {
+                              id: "checkboxes1",
+                              name: "flavour1",
+                              options: _vm.options
+                            },
+                            model: {
+                              value: _vm.selecte,
+                              callback: function($$v) {
+                                _vm.selecte = $$v
+                              },
+                              expression: "selecte"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "float-right",
+                          attrs: { size: "md", variant: "success" },
+                          on: {
+                            click: function($event) {
+                              _vm.dispo(_vm.selecte)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                valider\n                            "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _vm._m(15),
                   _vm._v(" "),
@@ -65244,29 +65381,7 @@ var render = function() {
                   _vm._v(" "),
                   _vm._m(18),
                   _vm._v(" "),
-                  _vm._m(19),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
-                      { staticClass: "pb-2" },
-                      [
-                        _c(
-                          "b-button",
-                          {
-                            staticClass: "float-right",
-                            attrs: { size: "md", variant: "success" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                        valider\n                                    "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
+                  _vm._m(19)
                 ]
               )
             ]
@@ -65283,7 +65398,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "file btn btn-lg btn-primary" }, [
       _vm._v(
-        "\n                            Change Photo\n                            "
+        "\n                        Change Photo\n                        "
       ),
       _c("input", { attrs: { type: "file", name: "file" } })
     ])
@@ -65293,7 +65408,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "proile-rating" }, [
-      _vm._v("RANKINGS : "),
+      _vm._v("RANKINGS :\n                        "),
       _c("span", [_vm._v("8/10")])
     ])
   },
@@ -65530,57 +65645,47 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("h4", [_vm._v(" Période disponibilité")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("label", [_vm._v("disponiblité date debut ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("label", [_vm._v("disponiblité date de fin ")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("h4", [_vm._v(" Disponibilité hebdomadaire")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-1" }, [_c("label", [_vm._v("Lundi")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [_c("label", [_vm._v("Mardi")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", [_vm._v("Mercredi")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [_c("label", [_vm._v("Jeudi")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", [_vm._v("Vendredi")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [_c("label", [_vm._v("Samdi")])]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-1" }, [
-        _c("label", [_vm._v("Dimanche")])
+      _c("h4", [
+        _vm._v("\n                                Période disponibilité")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("label", [
+        _vm._v("disponiblité date debut\n                                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("label", [
+        _vm._v("disponiblité date de fin\n                                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("h4", [
+        _vm._v("\n                                Disponibilité hebdomadaire")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "pb-2" })
     ])
   },
   function() {
@@ -65792,7 +65897,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         imgUrl: function imgUrl(id) {
-            return 'http://www.worldhotel.co.kr/main/img/avatar/avatar' + id + '.png';
+            return 'https://cdn.iconscout.com/icon/free/png-256/avatar-369-45632' + id + '.png';
         },
         getId: function getId() {
             var id = 1;

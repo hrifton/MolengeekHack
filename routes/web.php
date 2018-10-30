@@ -25,5 +25,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/role','RoleController');
-
+Route::resource('/dispo','DispoController');
 Route::resource('/user','UserController');

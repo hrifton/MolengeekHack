@@ -47,7 +47,7 @@ mounted() {
 },
 methods:{
     imgUrl (id){
-    return 'http://www.worldhotel.co.kr/main/img/avatar/avatar'+id+'.png';
+    return 'https://cdn.iconscout.com/icon/free/png-256/avatar-369-45632'+id+'.png';
                                                                               },
  getId() {
    var id=1;
