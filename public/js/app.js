@@ -65126,7 +65126,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
-                console.log(error);
+                console.log('sa passe pas ');
             });
         },
         imgUrl: function imgUrl(id) {

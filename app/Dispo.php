@@ -22,23 +22,23 @@ class Dispo extends Model
     //  dd(empty(Dispo::where('date_debut','=',$dateDeb)->where('date_fin','=',$dateFin)->first()));
       if(empty(Dispo::where('date_debut','=',$dateDeb)->where('date_fin','=',$dateFin)->first())){
             $result='Create insert';
+            $dispo_id=Dispo::create([ 
+                'date_debut'=> $dateDeb,
+            'date_fin'=> $dateFin]);
+            return User_dispo::create([
+                'user_id'=>$user,
+                'dispo_id'=>$dispo_id->id
+            ]);
         }else{
-            $result= Dispo::where('date_debut','=',$dateDeb)->where('date_fin','=',$dateFin)->pluck('id')->first() ;           // Dispo::where('date_debut','=',$dateDeb)->where('date_fin','=',$dateFin)->pluck('id');
-        }
-        dd($result);
-     /*   
-        $dispo_id=Dispo::create([ 
-            'date_debut'=> $dateDeb,
-        'date_fin'=> $dateFin]);
-       
-        return User_dispo::create([
-            'user_id'=>$user,
-            'dispo_id'=>$dispo_id->id
-        ]);
+            $result= Dispo::where('date_debut','=',$dateDeb)->where('date_fin','=',$dateFin)->pluck('id')->first();
+            
+            return User_dispo::create([
+                'user_id'=>$user,
+                'dispo_id'=>$result
+            ]);
+
+            }
         
-        return User_dispo::create([
-            'user_id'=>$user, 
-            'dispo_id'=>$dispo_id->id
-        ]);*/
+   
     }
 }
