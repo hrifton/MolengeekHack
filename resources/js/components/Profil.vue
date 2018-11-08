@@ -198,6 +198,7 @@
                                     <b-form-input
                                         v-model="daysselected.periodeDeb"
                                         type="date"
+                                        :min="day"
                                         class="form-control"></b-form-input>
                                 </div>
                             </div>
@@ -210,6 +211,7 @@
                                     <b-form-input
                                         v-model="daysselected.periodeFin"
                                         type="date"
+                                        :min="daysselected.periodeDeb"
                                         class="form-control"></b-form-input>
                                 </div>
                                 <div class="col-md-2">
@@ -234,11 +236,7 @@
                                         v-model="selecte"
                                         :options="options"></b-form-checkbox-group>
                                 </b-form-group>
-                                <b-button
-                                    class="float-right"
-                                    size='md'
-                                    variant="success"
-                                    v-on:click="dispo(selecte)">
+                                <b-button class="float-right" size='md' variant="success" v-on:click="hebd()">
                                     valider
                                 </b-button>
                             </div>
@@ -317,11 +315,14 @@
                         email: ''
                     }
                 },
+                day: '',
                 select: [],
                 daysselected: {
                     periodeDeb: '',
                     periodeFin: ''
                 },
+
+                selecte: [],
                 // Must be an array reference!
                 options: [
                     {
@@ -349,7 +350,10 @@
                 ]
             }
         },
-
+        mounted() {
+         
+                this.day=new Date().getFullYear()+'-'+("0"+(new Date().getMonth()+1)).slice(-2)+'-'+("0"+new Date().getDate()).slice(-2);
+        },
         methods: {
             save(up) {
                 axios
@@ -364,7 +368,7 @@
             dispo(item) {
                 axios
                     .post('/dispo', {
-                        id:this.user.id,
+                        id: this.user.id,
                         dateDeb: this.daysselected.periodeDeb,
                         dateFin: this.daysselected.periodeFin
                     })
@@ -374,6 +378,9 @@
                     .catch(function (error) {
                         console.log('sa passe pas ');
                     });
+            },
+            hebd() {
+                alert(new Date())
             },
 
             imgUrl(id) {
@@ -388,6 +395,13 @@
                     id = Math.floor(Math.random() * Math.floor(10));
                 } while (id == 0);
                 return id;
+            },
+            getDay() {
+                var current_date;
+                var new_format_result;
+                current_date = new Date();
+                new_format_result = current_date.toISOString();
+                return new_format_result;
             }
         }
     }
