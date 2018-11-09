@@ -286,24 +286,6 @@
             </div>
         </form>
     </div>
-    <!-- <div class="container"> <div class="row justify-content-center"> <div
-    class="col-md-8"> <div class="card card-default"> <div
-    class="card-header">Profil {{user.name}}</div> <div class="card-body"> <div>
-    <b-input-group size="lg" prepend="nom" placeholder="user.name"> <b-form-input
-    v-model="up.user.name" type="text" :placeholder="user.name"></b-form-input>
-    </b-input-group> <br> <b-input-group size="lg" prepend="Email"
-    placeholder="user.email"> <b-form-input v-model="up.user.email" type="text"
-    :placeholder="user.email"></b-form-input> </b-input-group> <br> <div>
-    <b-form-group> <b-form-checkbox-group id="checkboxes1" name="flavour1"
-    v-model="up.selected" :options="options"> </b-form-checkbox-group>
-    </b-form-group> <b-form-group label="Choix du statut:"> <b-form-checkbox-group
-    id="checkboxes2" name="flavour2" v-model="up.selected"> <b-form-checkbox
-    value="1">Utilisateur</b-form-checkbox> <b-form-checkbox
-    value="2">Agent</b-form-checkbox> </b-form-checkbox-group> </b-form-group> <hr>
-    <b-button class="pull-right" variant="primary"
-    v-on:click="save(up)">Valider</b-button> </div> </div> </div> </div> </div>
-    </div> </div> -->
-
 </template>
 
 <script>
@@ -383,11 +365,17 @@
                         dateFin: this.daysselected.periodeFin
                     })
                     .then(function (response) {
-                        console.log(response);
+                        Vue.swal(
+                            {type: 'success', title: 'Sauvegarde', text: 'la période selectionner on etait sauvegarder', timer: 1500, showConfirmButton: false}
+                        );
                     })
                     .catch(function (error) {
-                        console.log('sa passe pas ');
+                        Vue.swal(
+                            {type: 'error', title: 'Période déjà définit', text: 'la période selectionner à  déjà etait sauvegarder', timer: 1500, showConfirmButton: false}
+                        );
                     });
+                item = '',
+                this.daysselected = ''
             },
             hebd(liste) {
                 liste.sort();
@@ -415,18 +403,23 @@
                             liste[i] = "dimanche"
                     }
                 }
-               axios.post('/dispoHebdo',{
-                   id:this.user.id,
-                   hebdo:liste,
-                   })
-                   .then(function (response) {
-                        console.log(response);
+                axios
+                    .post('/dispoHebdo', {
+                        id: this.user.id,
+                        hebdo: liste
+                    })
+                    .then(function (response) {
+                        Vue.swal(
+                            {type: 'success', title: 'Sauvegarde', text: 'les jours selectionner on etait sauvegarder', timer: 1500, showConfirmButton: false}
+                        );
                     })
                     .catch(function (error) {
-                        console.log('sa passe pas ');
+                        Vue.swal(
+                            {type: 'error', title: 'Jours déjà définit', text: 'les jours selectionner on déjà etait sauvegarder', timer: 1500, showConfirmButton: false}
+                        );
                     });
-                liste='',
-                this.selecte=[]
+                liste = '',
+                this.selecte = []
 
             },
 

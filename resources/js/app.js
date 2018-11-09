@@ -9,6 +9,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
+import VueSweetalert2 from 'vue-sweetalert2';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -20,6 +21,7 @@ Vue.component('profil', require('./components/Profil.vue'));
 Vue.component('list', require('./components/list.vue'));
 
 Vue.use(BootstrapVue);
+Vue.use(VueSweetalert2);
 const app = new Vue({
 	el: '#app'
 });
