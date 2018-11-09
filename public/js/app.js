@@ -65061,24 +65061,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65144,10 +65126,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 dateDeb: this.daysselected.periodeDeb,
                 dateFin: this.daysselected.periodeFin
             }).then(function (response) {
-                console.log(response);
+                Vue.swal({ type: 'success', title: 'Sauvegarde', text: 'la période selectionner on etait sauvegarder', timer: 1500, showConfirmButton: false });
             }).catch(function (error) {
-                console.log('sa passe pas ');
+                Vue.swal({ type: 'error', title: 'Période déjà définit', text: 'la période selectionner à  déjà etait sauvegarder', timer: 1500, showConfirmButton: false });
             });
+            item = '', this.daysselected = '';
         },
         hebd: function hebd(liste) {
             liste.sort();
@@ -65179,9 +65162,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 id: this.user.id,
                 hebdo: liste
             }).then(function (response) {
-                Vue.swal('OK');
+                Vue.swal({ type: 'success', title: 'Sauvegarde', text: 'les jours selectionner on etait sauvegarder', timer: 1500, showConfirmButton: false });
             }).catch(function (error) {
-                Vue.swal('Nok');
+                Vue.swal({ type: 'error', title: 'Jours déjà définit', text: 'les jours selectionner on déjà etait sauvegarder', timer: 1500, showConfirmButton: false });
             });
             liste = '', this.selecte = [];
         },
