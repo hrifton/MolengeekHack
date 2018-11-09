@@ -23,9 +23,10 @@ class DispoHebdo extends Model
             return UserDispoHebdo::create(['user_id'=>$id,
                 'dispoHebdo_id'=>DispoHebdo::where('jours',$hebdo)->pluck('id')->first()]);
         }else{
-           return DispoHebdo::create(['jours'=>$hebdo]);
-           //$result.=UserDispoHebdo::create(['user_id'=>$id,
-           //'dispoHebdo_id'=>]);
+            $result=DispoHebdo::create(['jours'=>$hebdo]);
+            $dispoHebdo_id=$result->attributes["id"];
+            $result.=UserDispoHebdo::create(['user_id'=>$id,
+           'dispoHebdo_id'=>$dispoHebdo_id]);
           
         }
      
