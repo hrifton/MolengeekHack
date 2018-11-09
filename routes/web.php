@@ -14,7 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/profil', function () {
+    return view('profil',['user'=> Auth::user()] );
+});
+Route::get('/list', function () {
+    return view('list');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/role','RoleController');
+Route::resource('/dispo','DispoController');
+Route::resource('/user','UserController');
+Route::resource('/dispoHebdo', 'DispoHebdoController');
