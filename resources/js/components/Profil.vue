@@ -420,10 +420,10 @@
                    hebdo:liste,
                    })
                    .then(function (response) {
-                        console.log(response);
+                        Vue.swal('OK');
                     })
                     .catch(function (error) {
-                        console.log('sa passe pas ');
+                       Vue.swal('Nok');
                     });
                 liste='',
                 this.selecte=[]
