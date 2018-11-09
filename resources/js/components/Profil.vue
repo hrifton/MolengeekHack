@@ -236,7 +236,11 @@
                                         v-model="selecte"
                                         :options="options"></b-form-checkbox-group>
                                 </b-form-group>
-                                <b-button class="float-right" size='md' variant="success" v-on:click="hebd()">
+                                <b-button
+                                    class="float-right"
+                                    size='md'
+                                    variant="success"
+                                    v-on:click="hebd(selecte)">
                                     valider
                                 </b-button>
                             </div>
@@ -327,32 +331,38 @@
                 options: [
                     {
                         text: 'Lundi',
-                        value: 'Lundi'
+                        value: '1'
                     }, {
                         text: 'Mardi',
-                        value: 'Mardi'
+                        value: '2'
                     }, {
                         text: 'Mercredi',
-                        value: 'Mercredi'
+                        value: '3'
                     }, {
                         text: 'Jeudi',
-                        value: 'Jeudi'
+                        value: '4'
                     }, {
                         text: 'Vendredi',
-                        value: 'Vendredi'
+                        value: '5'
                     }, {
                         text: 'Samedi',
-                        value: 'Samedi'
+                        value: '6'
                     }, {
                         text: 'Dimanche',
-                        value: 'Dimanche'
+                        value: '7'
                     }
                 ]
             }
         },
         mounted() {
-         
-                this.day=new Date().getFullYear()+'-'+("0"+(new Date().getMonth()+1)).slice(-2)+'-'+("0"+new Date().getDate()).slice(-2);
+
+            this.day = new Date().getFullYear() + '-' + (
+                "0" + (
+                    new Date().getMonth() + 1
+                )
+            ).slice(-2) + '-' + (
+                "0" + new Date().getDate()
+            ).slice(-2);
         },
         methods: {
             save(up) {
@@ -379,8 +389,45 @@
                         console.log('sa passe pas ');
                     });
             },
-            hebd() {
-                alert(new Date())
+            hebd(liste) {
+                liste.sort();
+                for (var i = 0; i < 7; i++) {
+                    switch (liste[i]) {
+                        case "1":
+                            liste[i] = "lundi"
+                            break;
+                        case "2":
+                            liste[i] = "mardi"
+                            break;
+                        case "3":
+                            liste[i] = "mercredi"
+                            break;
+                        case "4":
+                            liste[i] = "jeudi"
+                            break;
+                        case "5":
+                            liste[i] = "vendredi"
+                            break;
+                        case "6":
+                            liste[i] = "samdi"
+                            break;
+                        case "7":
+                            liste[i] = "dimanche"
+                    }
+                }
+               axios.post('/dispoHebdo',{
+                   id:this.user.id,
+                   hebdo:liste,
+                   })
+                   .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log('sa passe pas ');
+                    });
+                liste='',
+                this.selecte=[]
+
             },
 
             imgUrl(id) {
@@ -395,13 +442,6 @@
                     id = Math.floor(Math.random() * Math.floor(10));
                 } while (id == 0);
                 return id;
-            },
-            getDay() {
-                var current_date;
-                var new_format_result;
-                current_date = new Date();
-                new_format_result = current_date.toISOString();
-                return new_format_result;
             }
         }
     }

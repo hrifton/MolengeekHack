@@ -19,7 +19,7 @@ class Dispo extends Model
 
     public function relationtable($user,$dateDeb,$dateFin)
     {
-    //  dd(empty(Dispo::where('date_debut','=',$dateDeb)->where('date_fin','=',$dateFin)->first()));
+   
       if(empty(Dispo::where('date_debut','=',$dateDeb)->where('date_fin','=',$dateFin)->first())){
             $result='Create insert';
             $dispo_id=Dispo::create([ 

@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Dispo');
     }
+
+    public function dispo_hebdos ()
+    {
+        return $this->belongsToMany('App\Models\DispoHebdo');
+    }
 }
